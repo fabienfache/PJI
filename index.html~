@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html>
+
+   <head>
+        <meta charset="utf-8">
+        <title>Vidjil-Test</title>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/css.css" rel="stylesheet" type="text/css" />
+    </head>
+
+  <body>
+    <div class="container" id="menunav">
+      <header class="page-header">
+          	<!--on va commencer par tester une nav bar -->
+	<div class="navbar navbar-fixed-top navbar-inverse" id="menutop"><!-- navbar-inverse-->
+	<!-- Ici le fond par défaut de la nav bar est noir grace à la propriété "navbar-inverse" et le texte gris foncé difficile à lire
+	. Un texte ajouter ici devrait avoir un couleur spécifique???  A quoi sert nav-fixed-top ??? position fixe top ? -->
+	<div class="container-fluid"><!-- container-inverse ???-->
+		  <!-- "Bootstrap requires a containing element to wrap site contents and house our grid system. You may
+		  choose one of two containers to use in your projects. Note that, due to padding and more, neither 
+		  container is nestable."
+		  ->Source :  http://getbootstrap.com/css/ 
+		  !!! A priori il y aurait une histoire de padding et autre chose ... A creuser... semble avoir une signification
+		  avec la différence de tailles des écrans !!!
+		  * Nouvelle class de type container (fixed-width) il existe aussi les container-fluide (full-width)
+		  Comme pour le nav bar au dessus j'ai tenté de faire un "container-inverse" et en supprimant d'abord 
+		  "navbar-inverse" sans savoir si cela existe, à priori cela ne marche pas mais on pourrait s'amuser 
+		  à étendre certaine possibilité.
+		  Par exemple:
+		  - hypothèse 1 le container n'a pas de couleur de fond par défaut alors cela signifie que l'on ne peut pas inverser
+		  la couleur donc il faudrait éventuellement ajouter une classe supplémentaire "myContainerLocal" avec une règle de couleur de fond
+		  - hypothèse 2 il n'y a pas de classe container-inverse donc on peut éventuellement ajouter une feuille de css à part myBootstrapt
+		  avec de nouvelle règles
+		  -->
+		<div class="navbar-header">
+			<!-- revoir la navbar -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>                        
+      			</button>
+				<a class="navbar-brand" id="logo" href="#" onclick="console.log({'type': 'popup', 'default':'welcome'})">VIDJIL (beta)</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav">
+				      	<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Patients <!-- <span class="caret"></span>--></a>
+							<ul class="dropdown-menu">
+								<li><a class="buttonSelector" onclick="javascript:db.reload()">open patient</a></li>
+								<li><a class="buttonSelector" onclick="javascript:db.save_analysis()">save analysis</a></li>
+							</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Import/Export<!-- <span class="caret"></span>--></a>
+							<ul class="dropdown-menu">
+								<li><a id="import_data_anchor" id="import_data" class="buttonSelector" onclick="javascript:loadData()">import data (.vidjil)</a></li>
+								<li><a class="buttonSelector" onclick="javascript:db.save_analysis()">save analysis</a></li>
+								<!--<li><a class="buttonSelector" onclick="javascript:m.resetAnalysis()">reset analysis</a></li> -->
+								<!--<li><a class="buttonSelector" onclick="javascript:reset()">reset all</a></li> -->
+								<li class="divider"></li>
+								<li><a class="buttonSelector" id="export_sample_report" onclick="javascript:report.reportHTMLdiag()">export report (sample)</a>
+								<li><a class="buttonSelector" id="export_monitor_report" onclick="javascript:report.reportHTML()">export report (monitor)</a>
+								<li class="divider"></li>
+								<li><a class="buttonSelector" id="export_analysis" onclick="javascript:m.saveAnalysis()">export analysis</a></li>
+								<li><a class="buttonSelector" id="export_pdf" onclick="javascript:pdf.makeGraph()">export pdf (graph)</a></li>
+								<li><a class="buttonSelector" id="export_csv" onclick="javascript:m.exportCSV()">export csv (visible clones)</a></li>
+								<li><a class="buttonSelector" id="export_fasta" onclick="javascript:m.exportFasta()">export fasta (selected clones)</a></li>		
+							</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Cluster<!-- <span class="caret"></span>--></a>
+							<ul class="dropdown-menu">
+								<li><a class="buttonSelector" onclick="m.restoreClusters();">clones merged by user</a></li>
+								<li><a class="buttonSelector" onclick="m.resetClusters();">reset all user clones</a></li>
+								<li><a class="buttonSelector" onclick="m.clusterBy(function(id){return m.clone(id).getGene(5)});">cluster by V/5' </a></li>
+								<li><a class="buttonSelector" onclick="m.clusterBy(function(id){return m.clone(id).getGene(3)});">cluster by J/3' </a></li>
+								<li><a class="buttonSelector" onclick="m.clusterBy(function(id){return m.clone(id).germline});">cluster by locus </a></li>
+							</ul>
+					</li>
+					<li id ="spe"><label>Color by<label>
+							<!--<div class="div-menu-selector">-->
+								<select class="filter-option" onchange="m.changeColorMethod(this.value)">
+									<option value="Tag">tag</option>
+									<option value="V">V/5'</option>
+									<option value="J">J/3'</option>
+									<option value="N">N</option>
+									<option value="system" id="color_system_button">locus/germline</option>
+									<option value="abundance">abundance</option>
+								</select>
+					</li>
+					<!-- <span class="caret"></span>-->
+							<!---</div>-->
+		</ul>
+	     </div>
+	</div>
+      </header>
+    </div>
+
+    <div class="container-fluid" id = "globale">  <!--fluid-->
+         <div class="col-md-9" id= "principale">
+
+	    <div class="container-fluid col-md-10" id= "windows">
+            	<img id="image1" src="image/jaune.png">
+	    </div>
+	    <div class="col-md-2" id= "filter">
+            	<span title="clone 1" id="fastTag0" class="tagColorBox tagColor0"></span>
+		<span title="clone 2" id="fastTag1" class="tagColorBox tagColor1"></span>
+		<span title="clone 3" id="fastTag2" class="tagColorBox tagColor2"></span>
+		<span title="clone 4" id="fastTag3" class="tagColorBox tagColor3"></span>
+		<span title="clone 5" id="fastTag4" class="tagColorBox tagColor4"></span>
+		<span title="clone 6" id="fastTag5" class="tagColorBox tagColor5"></span>
+		<span title="clone 7" id="fastTag6" class="tagColorBox tagColor6"></span>
+		<span title="clone 8" id="fastTag7" class="tagColorBox tagColor7"></span>
+		<span title="clone 9" id="fastTag8" class="tagColorBox tagColor8"></span>
+	    </div>
+         </div>
+
+        <div id="scroll" class="col-md-3" id= "secondaire">
+          <div>
+            <img id="image2" src="image/vert.png">
+          </div>
+          <div>
+            <img id="image3" src="image/rouge.png">
+          </div>
+          <div>
+             <img id="image4" src="image/noir.png">
+          </div>
+           
+        </div>
+      </div>
+	</div>
+	<footer class="footer">
+	  <div class="container-fluid" id="footerbut">
+	  
+	  </div>
+      	<div class="container-fluid" id="dna">
+	  <p class="text-muted">
+        <h1>DNA</h1>
+        AAAAGTAACTAAAAC
+	</p>
+      </div>
+    </footer>
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js" ></script>
+    <script>
+      //$color = "image/jaune.png"
+      
+      var save = 'image/jaune.png';
+      var open = false;
+      var close = true;
+      //$('#image1').attr('src', 'image/jaune.png');
+
+      function TestSwitch(img1, img2){
+        
+        $(img1).attr('src',$(img2).attr('src'));
+        $(img2).attr('src',save);
+        save = $(img1).attr('src');
+      }
+
+      $("#image2").click(function(){
+        TestSwitch('#image1', '#image2');
+      });
+
+      $("#image3").click(function(){
+        TestSwitch('#image1', '#image3');
+      });
+
+      $("#image4").click(function(){
+        TestSwitch('#image1', '#image4');
+      });
+      
+	/*
+	$(function(){
+		$('#dna').resizable();
+	});
+	*/
+
+	function UpIt()
+	{
+		if(close ==true)
+		{
+			$(".footer").height("100");
+			close = false;
+		}
+		else
+		{
+			$(".footer").height("50");
+			close = true;
+		}
+	}
+
+
+	$("#footerbut").click(function() {
+		  UpIt(".footer");
+      });
+
+		  /*  or something like this
+			$(this).animate({
+			  'width' : '500px',
+			  'height': '500px' 
+			});
+		  */
+
+			  
+	 
+      /*
+      $(function() {
+
+        $("#image1").click(function(){
+            //$temp = ("#image1").attr('src');
+            //alert($temp);
+            $("#image1").attr('src','image/jaune.png');
+        });
+
+        $("#image2").click(function(){
+            $("#image1").attr('src','image/vert.png');
+            $("#image2").attr('src','image/jaune.png');
+            save = $("#image2");
+        });
+
+        $("#image3").click(function(){
+            $("#image1").attr('src','image/rouge.png');
+        });
+
+        $("#image4").click(function(){
+            $("#image1").attr('src','image/noir.png');
+        });
+
+      });
+      */
+    </script>
+
+  </body>
+</html>
