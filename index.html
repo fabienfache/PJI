@@ -79,12 +79,8 @@
     </div>
 
     <div class="container-fluid" id = "globale">  <!--fluid-->
-         <div class="col-md-9" id= "principale">
-
-	    <div class="container-fluid col-md-10" id= "windows">
-            	<img id="image1" src="image/jaune.png">
-	    </div>
-	    <div class="col-md-2" id= "filter">
+         <div class="col-md-10" id= "principale">
+	    <div class="col-md-1" id= "filter">
             	<span title="clone 1" id="fastTag0" class="tagColorBox tagColor0"></span>
 		<span title="clone 2" id="fastTag1" class="tagColorBox tagColor1"></span>
 		<span title="clone 3" id="fastTag2" class="tagColorBox tagColor2"></span>
@@ -95,9 +91,15 @@
 		<span title="clone 8" id="fastTag7" class="tagColorBox tagColor7"></span>
 		<span title="clone 9" id="fastTag8" class="tagColorBox tagColor8"></span>
 	    </div>
+	    <div class="container-fluid col-md-11" id= "windows">
+            	<img class="image" id="image1" src="image/jaune.png">
+		<img class="imagehidden" id="imageh2" src="image/vert.png">
+		<img class="imagehidden" id="imageh3" src="image/rouge.png">
+		<img class="imagehidden" id="imageh4" src="image/noir.png">
+	    </div>
          </div>
 
-        <div id="scroll" class="col-md-3" id= "secondaire">
+        <div id="scroll" class="col-md-2" id= "secondaire">
           <div>
             <img id="image2" src="image/vert.png">
           </div>
@@ -133,23 +135,24 @@
       var close = true;
       //$('#image1').attr('src', 'image/jaune.png');
 
-      function TestSwitch(img1, img2){
+      function TestSwitch(img1, img2, img3){
         
         $(img1).attr('src',$(img2).attr('src'));
         $(img2).attr('src',save);
+	$(img3).attr('src',save);
         save = $(img1).attr('src');
       }
 
       $("#image2").click(function(){
-        TestSwitch('#image1', '#image2');
+        TestSwitch('#image1', '#image2', '#imageh2');
       });
 
       $("#image3").click(function(){
-        TestSwitch('#image1', '#image3');
+        TestSwitch('#image1', '#image3', '#imageh3');
       });
 
       $("#image4").click(function(){
-        TestSwitch('#image1', '#image4');
+        TestSwitch('#image1', '#image4', '#imageh4');
       });
       
 	/*
