@@ -1,0 +1,25 @@
+# Projet de Master 1 Informatique Semestre 2
+
+Intro
+=====
+
+Il s'agit du projet individuel effectué dans le cadre de la première années de master informatique réalisé avec ma binôme Amina Boussalia.
+Néanmoins vous trouverez ici ma reflexion personnel sur le sujet ainsi que mes avancées.
+
+
+Contenu
+=======
+
+Actuellement le projet est toujours en phase de __prototypage__ aucune intégration du code n'a été effectué (__mais quelque test non fournis__).
+Le browser contient une version "__mobile__" et une autre version qui devrait être celle de la "__tablette__".
+Il existe pour chaque version un mode "__portrait__" et "__landscape__". Néanmoins il existe encore quelque soucis au niveau de la transition entre différents elements.
+J'ai abandonné l'idée de faire des "__clones carrés proportionnels à la hauteur__" pour donner une taille fixe. Il faut néanmoins faire attention au trés petite taille.
+
+
+Mobile
+======
+
+Le choix du carrousel pour le mode mobile me parrait être un "choix délicat", car il permet d'une part d'exploiter la totalité de l'écran tout en ayant de bons moyens
+d'accés au différentes fenêtre (sequentiellement ou grâce au "carrousel-indicator"), mais pose problème avec l'elaboration d'un mode "bureau". En effet, pour un rendu 
+cohérent il faudrait disposer des fenêtres que le carrousel contient et les redispatché en quatre zone (graphe, gride, liste lymphocyte, info).
+
