@@ -9,12 +9,13 @@
     </head>
 
   <body>
+
     <div class="container" id="menunav">
       <header class="page-header">
 	<div class="navbar navbar-fixed-top navbar-inverse" id="menutop"><!-- navbar-inverse-->
 	<!-- Ici le fond par défaut de la nav bar est noir grace à la propriété "navbar-inverse" et le texte gris foncé difficile à lire
 	. Un texte ajouter ici devrait avoir un couleur spécifique???  A quoi sert nav-fixed-top ??? position fixe top ? -->
-	<div class="container-fluid"><!-- container-inverse ???-->
+	<div id="myMenu" class="container-fluid"><!-- container-inverse ???-->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         			<span class="icon-bar"></span>
@@ -24,7 +25,7 @@
 				<a class="navbar-brand" id="logo" href="#" onclick="console.log({'type': 'popup', 'default':'welcome'})">VIDJIL (beta)</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
-		<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav pull-left">
 				      	<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Patients <!-- <span class="caret"></span>--></a>
 							<ul class="dropdown-menu">
@@ -80,6 +81,9 @@
 
     <div class="container-fluid" id = "globale">  <!--fluid-->
          <div class="col-md-10" id= "principale">
+	<div id=gauche><a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	  </a>
+	</div>
 	    <div class="col-md-1" id= "filter">
             	<span title="clone 1" id="fastTag0" class="tagColorBox tagColor0"></span>
 		<span title="clone 2" id="fastTag1" class="tagColorBox tagColor1"></span>
@@ -91,42 +95,111 @@
 		<span title="clone 8" id="fastTag7" class="tagColorBox tagColor7"></span>
 		<span title="clone 9" id="fastTag8" class="tagColorBox tagColor8"></span>
 	    </div>
-	    <div class="container-fluid col-md-11" id= "windows">
-            	<img class="image" id="image1" src="image/jaune.png">
-		<img class="imagehidden" id="imageh2" src="image/vert.png">
-		<img class="imagehidden" id="imageh3" src="image/rouge.png">
-		<img class="imagehidden" id="imageh4" src="image/noir.png">
-	    </div>
+
+	
+	 <div class="container-fluid col-md-12" id= "windows">
+
+	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+
+	  <!-- Wrapper for slides -->
+	   <div class="carousel-inner" role="listbox">
+	     <div class="item active" >
+	       	<div id="main" class="container-fluide col-md-12">
+		<p> je suis la fenetre principale
+		 je peux etre echanger 
+		je contient INFO PATIENT </p>
+	      </div>
+	     </div>
+
+	     <div class="item">
+	      	<div class="imagehidden container-fluide col-md-12" id="imageh2">
+		<p> je suis la fenetre secondaire
+		    je suis de taille réduite
+	            je contient GRAPHE PATIENT</p>
+		</div>
+	     </div>
+
+	     <div class="item">
+	       <div class="imagehidden container-fluide col-md-12" id="imageh3">
+		<p> je suis la troisième fenetre
+		 je suis de taille réduite
+		je contient GRIDE PATIENT</p>
+	      </div>
+	     </div>
+
+	     <div class="item">
+	      	<div class="imagehidden container-fluide col-md-12" id="imageh4">
+		<p> je suis la quatrieme fenetre
+		je suis de taille réduite
+		je contient DNA PATIENT</p>
+		</div>
+	     </div>
+
+	  </div>
+	
+	</div>
+	</div>
+  	<div id=droite><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	  </a>
+	</div >
          </div>
 
-        <div id="scroll" class="col-md-2" id= "secondaire">
+        <div id="scrolle" class="col-md-2">
+            <div id="second" class="container-fluid col-md-12">
+		<p> je suis la fenetre secondaire
+		 je suis de taille réduite 
+		 je contient GRAPHE PATIENT</p>
+	  
+            </div>
           <div>
-            <img id="image2" src="image/vert.png">
+            <div id="third" class="container-fluid col-md-12">
+		<p> je suis la troisième fenetre
+		 je suis de taille réduite
+		je contient GRIDE PATIENT</p>
           </div>
           <div>
-            <img id="image3" src="image/rouge.png">
+             <div id="fourth" class="container-fluid col-md-12">
+		<p> je suis la quatrieme fenetre
+		je suis de taille réduite
+		je contient DNA PATIENT</p>
           </div>
-          <div>
-             <img id="image4" src="image/noir.png">
-          </div>
-           
+          <div id="filterb">
+            	<span title="clone 1" id="fastTag0" class="tagColorBox tagColor0"></span>
+		<span title="clone 2" id="fastTag1" class="tagColorBox tagColor1"></span>
+		<span title="clone 3" id="fastTag2" class="tagColorBox tagColor2"></span>
+		<span title="clone 4" id="fastTag3" class="tagColorBox tagColor3"></span>
+		<span title="clone 5" id="fastTag4" class="tagColorBox tagColor4"></span>
+		<span title="clone 6" id="fastTag5" class="tagColorBox tagColor5"></span>
+		<span title="clone 7" id="fastTag6" class="tagColorBox tagColor6"></span>
+		<span title="clone 8" id="fastTag7" class="tagColorBox tagColor7"></span>
+		<span title="clone 9" id="fastTag8" class="tagColorBox tagColor8"></span>
+	    </div>
         </div>
+
+	
       </div>
+
 	</div>
 	<footer class="footer">
 	  <div class="container-fluid" id="footerbut">
 	  
 	  </div>
       	<div class="container-fluid" id="dna">
-	  <p class="text-muted">
-        <h1>DNA</h1>
-        AAAAGTAACTAAAAC
-	</p>
+	  
+	<ol class="carousel-indicators">
+	    <li id="infoicone" data-target="#myCarousel" data-slide-to="0"></li>
+	    <li id="graphicone" data-target="#myCarousel" data-slide-to="1"></li>
+	    <li id="gridicone" data-target="#myCarousel" data-slide-to="2"></li>
+	    <li id="dnaicone" data-target="#myCarousel" data-slide-to="3"></li>
+	  </ol>
+	<p class="text-muted"></p>
       </div>
     </footer>
     
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js" ></script>
+    <script src="js/myscript.js"></script>
     <script>
       //$color = "image/jaune.png"
       
@@ -135,7 +208,7 @@
       var close = true;
       //$('#image1').attr('src', 'image/jaune.png');
 
-      function TestSwitch(img1, img2, img3){
+    /*  function TestSwitch(img1, img2, img3){
         
         $(img1).attr('src',$(img2).attr('src'));
         $(img2).attr('src',save);
@@ -154,13 +227,38 @@
       $("#image4").dblclick(function(){
         TestSwitch('#image1', '#image4', '#imageh4');
       });
+*/
+	function swapNodes(a, b, c) {
+	var variable = $(a).html();
+	var variable2 = $(b).html();
+	$(c).html(variable);
+	$(b).html(variable);
+	$(a).html(variable2);
+	}
+     
+	 $("#second").dblclick(function()
+	{
+        swapNodes('#main', '#second','#imageh2');
+      	});
+
+	$("#third").dblclick(function()
+	{
+        swapNodes('#main', '#third','#imageh3');
+      	});
+
+
+	 $("#fourth").dblclick(function()
+	{
+        swapNodes('#main', '#fourth','#imageh4');
+      	});
+
       
 	/*
 	$(function(){
 		$('#dna').resizable();
 	});
 	*/
-
+/*
 	function UpIt()
 	{
 		if(close ==true)
@@ -179,6 +277,10 @@
 	$("#footerbut").click(function() {
 		  UpIt(".footer");
       });
+*/
+$('.carousel').carousel({
+    interval: false
+});
 
 		  /*  or something like this
 			$(this).animate({
