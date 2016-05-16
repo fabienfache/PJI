@@ -41,7 +41,7 @@ La fonctionnalité principale de cette version et de pouvoir "swapper" le conten
 Bureau
 ======
 
-Le modèle n'est pas encore défini même si celle ci devrait être "similaire" à la version original.
+Le modèle n'est pas encore défini même si celui-ci devrait être "similaire" à la version original.
 
 
 
